@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html> 
+    <head> 
+        <meta charset="utf-8">
+        <meta name=""viewport" content="width=device-width, initial-scale=1">
+        <title>My First Website</title> 
+        <link rel="stylesheet" href="style.css">
+    </head> 
+
+    <body>
+            <nav><a href="games.html">Games</a> <a href="index.html">Home</a></nav>
+
+            <h1>CHEESE GAME.</h1>
+
+        <div class="sectionLeft">
+            <center>
+                <div class="scoreContainer">
+                    <span id="score">0</span> cheese<br>
+                    <span id="scorePerSecond">0</span> cheese per second
+                </div>
+                <br>
+                <div class="clickerContainer">
+                    <img src="images/cheese.jpg" height="256" width="256" onclick="addToScore(clickingPower)">
+                </div>
+            </center>
+        </div>   
+
+        <div class="sectionRight">
+            <table class="shopButton" onclick="buyCursor()">
+                <tr>
+                    <td id="image"><img src="images/pan.png"</td>
+                    <td id="nameAndCost">
+                        <p>Cursor</p>
+                        <p><span id="cursorCost">15</span> cheese</p>
+                    </td>
+                    <td id="amount"><span id="cursors">0</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="sectionRight">
+            <table class="shopButton" onclick="buyCow()">
+                <tr>
+                    <td id="image"><img src="images/cow.webp"</td>
+                    <td id="nameAndCost">
+                        <p>Cow</p>
+                        <p><span id="cowCost">100</span> cheese</p>
+                    </td>
+                    <td id="amount"><span id="cows">0</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            var score = 0;
+            var cursorCost = 15;
+            var cursors = 0;
+            var clickingPower = 2;
+            var cowCost = 100
+            var cows = 0
+
+            function buyCursor(amount){
+                if (score >= cursorCost) {
+                    score = score - cursorCost;
+                    cursors = cursors + 1;
+                    cursorCost = Math.round(cursorCost * 1.15);
+
+                    document.getElementById("score").innerHTML = score;
+                    document.getElementById("cursorCost").innerHTML = cursorCost;
+                    document.getElementById("cursors").innerHTML = cursors;
+                    updateScorePerSecond();
+                }
+            }
+
+            function buyCow(amount){
+                if (score >= cowCost) {
+                    score = score - cowCost;
+                    cow = cow + 1;
+                    cowCost = Math.round(cowCost * 1.15);
+
+                    document.getElementById("score").innerHTML = score;
+                    document.getElementById("cowCost").innerHTML = cowCost;
+                    document.getElementById("cow").innerHTML = cows;
+                    updateScorePerSecond();
+                }
+            }
+
+
+            function addToScore(amount) {
+                score = score + amount;
+                document.getElementById("score").innerHTML = score;
+            }
+
+            function updateScorePerSecond(){
+                scorePerSecond = cursors + cows * 10;
+                document.getElementById("scorePerSecond").innerHTML = scorePerSecond
+            }
+
+
+            setInterval(function() {     
+                score = score + cursors;
+                score = score + cows;
+                document.getElementById("score").innerHTML = score;
+            }, 1000); // 1000ms = 1 second
+        </script>
+    </body>
+</html>
