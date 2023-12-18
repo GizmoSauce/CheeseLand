@@ -4,18 +4,18 @@
         <meta charset="utf-8">
         <meta name=""viewport" content="width=device-width, initial-scale=1">
         <title>Cheese land</title> 
+        <link rel="icon" href="images/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png">
+        
         <style>
             h1 {
                 color: yellow;
                 font-weight: bold;
                 font-family: roboto;
-                margin-left:30%;
-                margin-right: 30%;
-
+                font-size: 100px;
             }
 
             body {
-                background: url(images/misc125.gif);
+                background: url(images/cloudy.gif);
                 color: chartreuse;
             }
 
@@ -24,11 +24,6 @@
             }
 
 
-            .buttonSize {
-                width: 200px;
-                height: 200px;
-            }
-
             .imageSize {
                 width: 200px;
                 height: 200px;
@@ -36,6 +31,8 @@
 
             p {
                 font-size: 30px;
+                margin-left: 250px;
+                margin-right: 250px;
             }
 
             .sectionLeft {
@@ -54,16 +51,59 @@
                 margin-right 50%;
             }
 
-            .buttonMagic {
-                position: relative;
-                font-size: 25px;
-                background: green url(images/ControllerAnim.gif) no-repeat top left;
-                font-family: fantasy;
-                color: rgb(6, 135, 60);
-                border-width: 10px;
-                border-color: rgb(130, 130, 255);
+
+            ::-webkit-scrollbar {
+                width: 1em
             }
 
+            ::-webkit-scrollbar-track {
+                background-color: lightgrey;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: rgb(142, 142, 142);
+                outline: 1px solid black;
+            }
+
+            ::-webkit-scrollbar-button {
+                background-color: rgb(142, 142, 142);
+            }
+
+            .container {
+                display: table;
+                width: 320px;
+                height: 160px;
+                background-color: #659ceae6;
+                border-style: solid;
+                margin: 6px;
+                border-width: 2.5px;
+                border-color: #033ba2;
+                border-right-width: 0;
+                border-bottom-width: 0;
+                box-shadow: -2.5px -2.5px #659ceae6, 2.5px -2.5px #659ceae6, -2.5px 2.5px #659ceae6, 2.5px 2.5px #659ceae6, -2.5px 5px #033ba2, 5px -2.5px #033ba2, 5px 5px #033ba2;
+                position: relative;
+            }
+
+            .container .text {
+                display: table-cell;
+                height: 100%;
+                vertical-align: bottom;
+                font-size: 2rem;
+                padding-left: 5px;
+                color: chartreuse;
+            }
+
+            .container .clear {
+                clear: both;
+            }
+            
+            #wrap2 {
+                width: 70%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-top: 30px;
+            }
 
 
         </style>
@@ -71,25 +111,40 @@
     <body>
         <center>
             <div class="sectionLeft">
-            <img src="images/cheese.gif">
+            <img src="images/cheese.gif" style="position: absolute; right: 80%; top: 20px;" width="200px" height="200px">
             </div>
             <h1>
                 Cheeseland
             </h1>
             <div class="sectionRight">
-                <img src="images/wingwave.gif" width="100px" height="100px">
+                <img src="images/wingwave.gif" style="position: absolute;
+                left:80%; top: 20px;"width="200px" height="200px">
             </div>
             <p>
                 Welcome to cheeseland! the wonderful place of happiness and random stuff. I made this so I have a place to work on projects and share them as well. this houses everything I've made and will make. So sneak around! there is some hidden stuff as well.
             </p>
-            
-            <a href="games.html"><button class="buttonMagic" class="buttonSize">
-                <p>GAME</p>
-            </button></a>
-           
-            
+            <div id="wrap2">
+                <a href="games.html" style="text-decoration: none;"><div class="container">
+                    <div class="text">
+                        GAME
+                    </div>
+                    <img src="images/ControllerAnim.gif" height="140px" width="160px">
+                    <div class="clear"></div>
+                </div></a>
+                <div class="container">
+                    <a href=""></a>
+                    <div class="text">
+                        SOUND
+                    </div>
+                    <img src="images/cheese.gif" height="130px" width="150px">
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <a href="virus.html">
+                <img src="images/freebutton15.gif">
+            </a>
         </center>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a href="virus.html"><button class="sectionCenter" style="color: yellow"><img src="images/freebutton15.gif"></button></a>
     </body> 
 
        
