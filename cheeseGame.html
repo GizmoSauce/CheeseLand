@@ -12,6 +12,10 @@
 
             <h1>CHEESE GAME.</h1>
 
+            <h1 style="float: right;">
+                Buildings
+            </h1>
+
         <div class="sectionLeft">
             <center>
                 <div class="scoreContainer unselectable">
@@ -22,14 +26,12 @@
                 <div class="clickerContainer unselectable">
                     <img src="images/cheese.jpg" height="256" width="256" onclick="addToScore(clickingPower)">
                 </div>
-                <button onclick="saveGame();">Save Game</button>
             </center>
 
             <div class="sectionFooter">
                 <h5>Cheese Clicker</h5>
             </div>
         </div>
-
         <div class="sectionRight">
             <table class="shopButton unselectable" onclick="buyPan()">
                 <tr>
@@ -56,9 +58,19 @@
                     <td id="image"><img src="images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png"></td>
                     <td id="nameAndCost">
                         <p>Fromagerie</p>
-                        <p><span id="fromagerieCost">500</span> cheese</p>
+                        <p><span id="fromagerieCost">1,000</span> cheese</p>
                     </td>
                     <td id="amount"><span id="fromageries">0</span></td>
+                </tr>
+            </table>
+            <table class="shopButton unselectable" onclick="buyWisconsin()">
+                <tr>
+                    <td id="image"><img src="images/outline-wi-1400w.png"></td>
+                    <td id="nameAndCost">
+                        <p>Wisconsin</p>
+                        <p><span id="wisconsinCost">10,000</span> cheese</p>
+                    </td>
+                    <td id="amount"><span id="wisconsins">0</span></td>
                 </tr>
             </table>
         </div>
@@ -67,11 +79,13 @@
             var score = 0;
             var panCost = 15;
             var pans = 0;
-            var clickingPower = 2;
+            var clickingPower = 1;
             var cowCost = 100
             var cows = 0
-            var fromagerieCost = 500
+            var fromagerieCost = 1000
             var fromageries = 0
+            var wisconsinCost = 10000
+            var wisconsins = 0
 
             function buyPan(amount){
                 if (score >= panCost) {
@@ -112,6 +126,19 @@
                 }
             }
 
+            function buyWisconsin(amount){
+                if (score >= wisconsinCost) {
+                    score = score - wisconsinCost;
+                    wisconsins = wisconsins + 1;
+                    wisconsinCost = Math.round(wisconsinCost * 1.15);
+
+                    document.getElementById("score").innerHTML = score;
+                    document.getElementById("wisconsinCost").innerHTML = wisconsinCost;
+                    document.getElementById("wisconsins").innerHTML = wisconsins;
+                    updateScorePerSecond();
+                }
+            }
+
 
             function addToScore(amount) {
                 score = score + amount;
@@ -119,7 +146,7 @@
             }
 
             function updateScorePerSecond(){
-                scorePerSecond = pans + (cows * 10) + (fromageries * 50);
+                scorePerSecond = pans + (cows * 10) + (fromageries * 50) + (wisconsins * 500);
                 document.getElementById("scorePerSecond").innerHTML = scorePerSecond
             }
 
@@ -144,8 +171,9 @@
                     cowCost: cowCost,
                     cows: cows,
                     fromagerieCost: fromagerieCost,
-                    fromageries: fromageries
-
+                    fromageries: fromageries,
+                    wisconsinCost: wisconsinCost,
+                    wisconsins: wisconsins
                 };
                 localStorage.setItem("gameSave",  JSON.stingify(gameSave));
             }
@@ -166,6 +194,7 @@
                 score = score + pans;
                 score = score + cows * 10;
                 score = score + fromageries * 50;
+                score = score + wisconsins * 500
                 document.getElementById("score").innerHTML = score;
             }, 1000); // 1000ms = 1 second
 
