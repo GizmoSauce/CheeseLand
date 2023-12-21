@@ -5,12 +5,13 @@
         <meta name=""viewport" content="width=device-width, initial-scale=1">
         <title>Cheese Clicker</title> 
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png">
     </head> 
 
     <body data-particle="images/8bitcheese.png">
             <nav><a href="games.html">Games</a> <a href="index.html">Home</a></nav>
 
-            <h1>CHEESE GAME.</h1>
+            <h1>Cheese Clicker</h1>
 
             <h1 style="float: right;">
                 Buildings
@@ -24,7 +25,7 @@
                 </div>
                 <br>
                 <div class="clickerContainer unselectable">
-                    <img src="images/cheese.jpg" height="256" width="256" onclick="addToScore(clickingPower)">
+                    <img src="images/cheese.jpg" height="256" width="256" onclick="game.addToScore(game.clickValue)">
                 </div>
             </center>
 
@@ -32,7 +33,7 @@
                 <h5>Cheese Clicker</h5>
             </div>
         </div>
-        <div class="sectionRight">
+        <div class="sectionRight" id="shopContainer">
             <table class="shopButton unselectable" onclick="buyPan()">
                 <tr>
                     <td id="image"><img src="images/pan.png"</td>
@@ -76,131 +77,85 @@
         </div>
 
         <script>
-            var score = 0;
-            var panCost = 15;
-            var pans = 0;
-            var clickingPower = 1;
-            var cowCost = 100
-            var cows = 0
-            var fromagerieCost = 1000
-            var fromageries = 0
-            var wisconsinCost = 10000
-            var wisconsins = 0
+            var game = {
+                score: 0,
+                totalScore: 0,
+                totalClicks: 0,
+                clickValue: 1,
+                version: 0.001,
+            
+                addToScore: function(amount) {
+                    this.score += amount;
+                    this.totalScore += amount;
+                    display.updateScore();
+                },
 
-            function buyPan(amount){
-                if (score >= panCost) {
-                    score = score - panCost;
-                    pans = pans + 1;
-                    panCost = Math.round(panCost * 1.15);
-
-                    document.getElementById("score").innerHTML = score;
-                    document.getElementById("panCost").innerHTML = panCost;
-                    document.getElementById("pans").innerHTML = pans;
-                    updateScorePerSecond();
+                getScorePerSecond: function() {
+                    var scorePerSecond = 0;
+                    for(i = 0; i < building.name.length; i++) {
+                        scorePerSecond += building.income[i] * building.count[i];
+                    }
+                    return scorePerSecond;
                 }
-            }
-
-            function buyCow(amount){
-                if (score >= cowCost) {
-                    score = score - cowCost;
-                    cows = cows + 1;
-                    cowCost = Math.round(cowCost * 1.15);
-
-                    document.getElementById("score").innerHTML = score;
-                    document.getElementById("cowCost").innerHTML = cowCost;
-                    document.getElementById("cows").innerHTML = cows;
-                    updateScorePerSecond();
-                }
-            }
-
-            function buyFromagerie(amount){
-                if (score >= fromagerieCost) {
-                    score = score - fromagerieCost;
-                    fromageries = fromageries + 1;
-                    fromagerieCost = Math.round(fromagerieCost * 1.15);
-
-                    document.getElementById("score").innerHTML = score;
-                    document.getElementById("fromagerieCost").innerHTML = fromagerieCost;
-                    document.getElementById("fromageries").innerHTML = fromageries;
-                    updateScorePerSecond();
-                }
-            }
-
-            function buyWisconsin(amount){
-                if (score >= wisconsinCost) {
-                    score = score - wisconsinCost;
-                    wisconsins = wisconsins + 1;
-                    wisconsinCost = Math.round(wisconsinCost * 1.15);
-
-                    document.getElementById("score").innerHTML = score;
-                    document.getElementById("wisconsinCost").innerHTML = wisconsinCost;
-                    document.getElementById("wisconsins").innerHTML = wisconsins;
-                    updateScorePerSecond();
-                }
-            }
-
-
-            function addToScore(amount) {
-                score = score + amount;
-                document.getElementById("score").innerHTML = score;
-            }
-
-            function updateScorePerSecond(){
-                scorePerSecond = pans + (cows * 10) + (fromageries * 50) + (wisconsins * 500);
-                document.getElementById("scorePerSecond").innerHTML = scorePerSecond
-            }
-
-            function loadGame() {
-                var savedGame = JSON.parse(localStorage.getItem("gameSave"));
-                if (typeof savedGame.score !== "undefined") score = savedGame.score;
-                if (typeof savedGame.clickingPower !== "undefined") clickingPower = savedGame.clickingPower;
-                if (typeof savedGame.panCost !== "undefined") panCost = savedGame.panCost;
-                if (typeof savedGame.pans !== "undefined") pans = savedGame.pans;
-                if (typeof savedGame.cowCost !== "undefined") cowCost = savedGame.cowCost;
-                if (typeof savedGame.cows !== "undefined") cows = savedGame.cows;
-                if (typeof savedGame.fromagerieCost !== "undefined") fromagerieCost = savedGame.fromagerieCost;
-                if (typeof savedGame.fromageries !== "undefined") fromageries = savedGame.fromageries;
-            }
-
-            function saveGame() {
-                var gameSave = {
-                    score: score,
-                    clickingPower: clickingPower,
-                    panCost: panCost,
-                    pans: pans,
-                    cowCost: cowCost,
-                    cows: cows,
-                    fromagerieCost: fromagerieCost,
-                    fromageries: fromageries,
-                    wisconsinCost: wisconsinCost,
-                    wisconsins: wisconsins
-                };
-                localStorage.setItem("gameSave",  JSON.stingify(gameSave));
-            }
-
-            window.onload = function() {
-                loadGame();
-                updateScorePerSecond();
-                document.getElementById("score").innerHTML = score;
-                document.getElementById("panCost").innerHTML = panCost;
-                document.getElementById("pans").innerHTML = pans;
-                document.getElementById("cowCost").innerHTML = cowCost;
-                document.getElementById("cows").innerHTML = cows;
-                document.getElementById("fromagerieCost").innerHTML = fromagerieCost;
-                document.getElementById("fromageries").innerHTML = fromageries;
             };
 
-            setInterval(function() {     
-                score = score + pans;
-                score = score + cows * 10;
-                score = score + fromageries * 50;
-                score = score + wisconsins * 500
-                document.getElementById("score").innerHTML = score;
-            }, 1000); // 1000ms = 1 second
+            var building = {
+                name: [
+                    "Pan", 
+                    "Cow", 
+                    "Fromagerie", 
+                    "Wisconsin"
+                ],
+                image: [
+                    "images/pan.png",
+                    "images/cow.webp",
+                    "images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png",
+                    "images/outline-wi-1400w.png"
+                ],
+                count: [0, 0, 0, 0],
+                income: [
+                    1,
+                    10,
+                    50,
+                    500
+                ],
+                cost: [
+                    15,   
+                    100,
+                    1000,
+                    10000,
+                ],
 
-            setInterval(function() {
-                saveGame();
-            }, 30000) // 30000ms = 30 seconds
+                purchase: function(index) {
+                    if(game.score >= this.cost[index]) {
+                        game.score -= this.cost[index];
+                        this.count[index]++;
+                        this.cost[index] = Math.ceil(this.cost[index * 1.15]);
+                        display.updateScore();
+                        display.updateShop();
+                    }
+                }
+            };
+            
+            var display = {
+                updateScore: function() {
+                    document.getElementById("score").innerHTML = game.score;
+                    document.getElementById("scorePerSecond").innerHTML = game.getScorePerSecond();
+                    document.title = game.score + "cheese clicker";
+                },
+                
+                updateShop: function() {
+                    document.getElementById("shopContainer").innerHTML = "";
+                    for(i = 0; i < building.name.length; i++) {
+                        document.getElementById("shopContainer").innerHTML += '<table class="shopButton unselectable" onclick="building.purchase('+i+')"><tr><td id="image"><img src="images/'+building.image[i]+'"></td><td id="nameAndCost"><p>'+building.name[i]+'</p><p><span>'+building.cost[i]+'</span> cheese</p></td><td id="amount"><span>'+building.amount[i]+'</span></td></tr></table>';
+                    }
+                }
+            };
+
+            window.onload = function() {
+                display.updateScore();
+                display.updateShop();
+            };
         </script>
     </body>
 </html>

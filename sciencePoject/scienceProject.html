@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nanoparticle Therapy</title> 
+
+    <link rel="stylesheet" href="scienceProject.css">
+    <script>
+    window.onload = function() {
+        const options = {
+            root: null, // relative to document viewport 
+            rootMargin: '0px', // margin around root. Values are similar to css property. Unitless values not allowed
+            threshold: 0.5 // visible amount of item shown in relation to root
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                    entry.target.classList.add('hidden');
+                }
+            });
+        }, options);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    }
+    </script>
+
+    <style>
+    body {
+        background-color: #131316;
+        color: #ffff;
+        padding: 0;
+        margin: 0;
+    }
+
+    section {
+        display: grid;
+        place-items: center;
+        align-content: center; 
+        min-height: 100vh;
+    }
+
+    .hidden {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-10%);
+        transition: all 1s;
+    }
+
+    .show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+        transition: all 1s;
+    }
+
+    .zoom {
+        position: sticky;
+        top: 0.1vh;
+        z-index: 2;
+    }
+
+    .zoom h2 {
+        position: relative;
+        z-index: 3;
+    }
+
+    h1, h2 , h5, p {
+        text-align: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .behind {
+        position: relative;
+        z-index: 1;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        margin-top: 25px;
+        margin-left: 25px;
+    }
+    </style>
+</head>
+<body>
+    <a href="../index.html">Back to Cheeseland</a>
+
+    <section class="hidden">
+        <div>
+            
+            <h1>Nanoparticles in Cancer Therapy</h1>
+            <p>How nanoparticles are being reaserched and used to save lives and economic stabilities</p>
+            <h5>Lucas Masiero and James Hayes</h5>
+            
+        </div>
+    </section>
+
+    <section class="hidden">
+        <div class="zoom">
+            <h2>
+                _CLAIM_
+            </h2> 
+            <p>EXPLANATIONE XPLANAT IONE XPLANA TIONEXPLAN ATIONEXPL ANAT IO NEXPLANA TIONEX PLANAT</p>
+        </div>
+        <div>
+            <p class="behind">ballons are the greates thing and the world and are equivalent to bajjokies my omg  and we need to reduce and reuse and recyce wand lets learn about how to treat cancer therapy stuff and wowy thats alot left and we can get mushroom foam</p>
+        </div>
+    </section>
+
+    <section class="hidden">
+        <div>
+            <h2>_EVIDENCE_</h2>
+            <p>
+                EXPLANATIONEXPLANATIONEXPLANATIONEXPLANATIONEXPLANATIONEXPLANATIONEXPL
+            </p>
+        </div>
+    </section>
+</body>
+</html>
