@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nanoparticle Therapy</title> 
+
+    <link rel="stylesheet" href="scienceProject.css">
+    <script>
+    window.onload = function() {
+        const options = {
+            root: null, // relative to document viewport 
+            rootMargin: '0px', // margin around root. Values are similar to css property. Unitless values not allowed
+            threshold: 0.5 // visible amount of item shown in relation to root
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                    entry.target.classList.add('hidden');
+                }
+            });
+        }, options);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    }
+    </script>
+
+    <style>
+
+    section {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .hidden {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-10%);
+        transition: all 1s;
+    }
+
+    .show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+        transition: all 1s;
+    }
+
+    .zoom {
+        position: sticky;
+        top: 0.1vh;
+        z-index: 2;
+    }
+
+
+    h2 , h5, p {
+        text-align: center;
+        margin-left: 250px;
+        margin-right: 250px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        margin-top: 25px;
+        margin-left: 25px;
+    }
+
+    .late1 {
+        transition-delay: 200ms;
+    }
+
+    .late2 {
+        transition-delay: 500ms;
+    }
+
+    th {
+        font-size: 24px;
+        font-weight: 24px;
+    }
+
+    #footer {
+        position: fixed;
+        bottom:0;
+        height: 800px;
+        width: 100%;
+        background: black;
+        z-index: 1;
+    }
+
+    #reveal-main{
+        height: 1000px;
+    }
+
+    #curtain {
+        height: 5250px;
+        position: relative;
+        z-index: 2;
+        background-image: linear-gradient(black, rgb(0, 0, 90),  blue);
+    }
+
+    a:hover {
+        color: blue;
+    }
+
+     </style>
+</head>
+<body>
+    <div id="curtain">	
+        <nav><a href="../index.html">Back to Cheeseland</a></nav>
+
+        <section>
+            <div class="hidden late1">
+                <h1>Nanoparticles in Cancer Therapy</h1>
+            </div>
+            <div class="hidden late2">
+                <p>How nanoparticles are being reaserched and used to save lives and economic stabilities</p>
+                <h5>Lucas Masiero and James Hayes</h5>
+            </div>
+        </section>
+
+        <section>
+            <div class="hidden late1">
+                <h1>How Nanoparticles Fight Cancers</h1>
+            </div>
+            <div class="hidden late2">
+                <p>
+                    Nanoparticles are a technology that ranges in size from 1 nanometer to 100 nanometer. They act as capsules that contain drugs and will be opened at certain points in the body to release these drugs. They can also carry mRNA and DNA therapeutics that have expanded half-lives when encapsulated within the nanoparticle. The nanoparticles are created in a process of slicing up particles again and again until you get something small enough. These nanoparticles help to get the drug to places that would otherwise be impossible to get to. 
+                </p>
+            </div>
+        </section>
+
+        <section class="hidden">
+            <div>
+                <table border="0" style="border-spacing: 50px; margin: 250px;">
+                    <tr>
+                        <th class="hidden late2">Pros</th>
+                        <th class="hidden late1">Cons</th>
+                    </tr>
+                    <tr>
+                        <td class="hidden late2">
+                            Nanoparticles are a vital tool for identifying diagnostics, prognostic markers, as well as being able to detect tumors in the body, and being able to test different therapeutics for other diseases. Nanoparticles are able to transmit types of drugs to places in the body not normaly possible to get to
+                        </td>
+                        <td class="hidden late1">
+                            Due to our little knowledge on them, we still haven't found a way to use nanoparticles without risks. Nanoparticles can damage normal cells in the body as well as cancer cells. While we have been using nanoparticles much more than in the past, the amount of successful procedures has not increased much.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="hidden late1">
+                <h2>What Types of Cancers Have Nanoparticles Been Successful On?</h2>
+            </div>
+            <div class="hidden late2">
+                <p> 
+                    Since nanoparticles are carriers for other drugs to help them get to the desired place in the body, they themselves are not necessarily effective on any type of cancer. But the drugs that have been approved to be delivered using nanoparticles are Doxil and Abraxane. Doxil is most often used for ovarian cancer and AIDS. Abraxane is a chemotherapy drug used for breast and lung cancer.
+                </p> 
+            </div>
+        </section>
+
+        <section>
+            <div class="hidden late1">
+                <h2>Do Nanoparticles Need to Work Alongside Other Therapies?</h2>
+            </div>
+            <div class="hidden late2">
+                <p> 
+                    Nanoparticles are a capsule for other cancer drugs and will need to work alongside them to help fight cancer. If all you sent in were the nanoparticles nothing would happen as there would be no drug to be administered
+                </p> 
+            </div>
+        </section>
+        
+        <section>
+            <div class="hidden late1">
+                <h2>Side Effects</h2>
+            </div>
+            <div class="hidden late2">
+                <p> 
+                    While nanoparticles have shown great promise in fighting cancer, they do have risks. Inhaled nanoparticles may result in lung inflammation and heart problems. Nanoparticles can also be toxic to the brain and cause cardiac issues and problems.
+                </p> 
+            </div>
+        </section>
+
+        <section>
+            <div class="hidden late1">
+                <h2>Where are Nanoparticles in the Development Process?</h2>
+            </div>
+            <div class="hidden late2">
+                <p> 
+                    Throughout the years, nanoparticles have become a more popular theory in a way to stop cancer. However, while this option has been tried and tested, we don’t know enough about them to use them without potentially hurting the body. Scientists originally started researching this potential way to fight cancer in the 1980s, progress has been slow, but helpful, as we have made significant progress in studies to use nanoparticles.
+                </p> 
+            </div>
+        </section>
+    </div>
+</body>
+<div id="reveal-main"></div>
+<div id="footer" style="color: white;">
+    <h2 style="margin: 200px;">Works Cited</h2>
+    <p>
+        <a href="https://www.cancer.gov/nano/cancer-nanotechnology/treatment">National Cancer Institute. (2023, September 30). <em>Nanotechnology Cancer Therapy and Treatment - NCI.</em> National Cancer Institute. Retrieved Jan 3, 2024</a>
+        <br><br>
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8805951/"><em>New challenges in the use of nanomedicine in cancer therapy.</em> (2022, January 4). NCBI. Retrieved Jan 3, 2024</a>
+        <br><br>
+        <a href="https://www.nature.com/articles/nrc.2016.108#"><em>Cancer nanomedicine: progress, challenges and opportunities.</em> (11 Nov. 2016). Nature. Retrieved Jan 3 2024 </a>
+        <br><br>
+        <a href="https://jhoonline.biomedcentral.com/articles/10.1186/s13045-021-01096-0"><em>Nanomaterials for cancer therapy: current progress and perspectives.</em>(31 May 2021). Bio Med Central, BMC, Retrieved  Jan 3 2024.</a>
+    </p>
+</div>
+</html>
