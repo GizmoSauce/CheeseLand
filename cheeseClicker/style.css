@@ -88,6 +88,26 @@ body {
     display: block;
 }
 
+.utilityButtons {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.utilityButton:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.utilityButton {
+    padding: 8px 13px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+}
+
 .fadeUp {
     animation: fade-up 1s;
 }

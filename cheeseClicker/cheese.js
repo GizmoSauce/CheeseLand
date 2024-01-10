@@ -1,24 +1,6 @@
 let cheese = document.querySelector(".cheeseCost");
 let cheeseAmount = parseFloat(cheese.innerHTML);
 
-let panCost = document.querySelector(".panCost");
-let truePanCost = parseFloat(panCost.innerHTML);
-let panAmount = document.querySelector(".panAmount");
-let panCPS = document.querySelector(".panCPS");
-let truePanCPS = parseFloat(panCPS.innerHTML);
-
-let cowCost = document.querySelector(".cowCost");
-let trueCowCost = parseFloat(cowCost.innerHTML);
-let cowAmount = document.querySelector(".cowAmount");
-let cowCPS = document.querySelector(".cowCPS");
-let trueCowCPS = parseFloat(cowCPS.innerHTML);
-
-let fromagerieCost = document.querySelector(".fromagerieCost");
-let trueFromagerieCost = parseFloat(fromagerieCost.innerHTML);
-let fromagerieAmount = document.querySelector(".fromagerieAmount");
-let fromagerieCPS = document.querySelector(".fromagerieCPS");
-let trueFromagerieCPS = parseFloat(fromagerieCPS.innerHTML);
-
 let cheeseImageContainer = document.querySelector(".cheeseImageContainer")
 
 let cpsStat = document.querySelector(".cpsStat")
@@ -55,6 +37,21 @@ const buildings = [
         amount: document.querySelector(".fromagerieAmount"),
         costMultiplier: 1.25,
     },
+    {
+        name: 'wisconsin',
+        cost: document.querySelector(".wisconsinCost"),
+        trueCost: parseFloat(document.querySelector(".wisconsinCost").innerHTML),
+        cps: document.querySelector(".wisconsinCPS"),
+        trueCPS: parseFloat(document.querySelector(".wisconsinCPS").innerHTML),
+        amount: document.querySelector(".wisconsinAmount"),
+        costMultiplier: 1.25,
+    },
+]
+
+const timeout = (div) => [
+    setTimeout(() => {
+        div.remove()
+    }, 800)
 ]
 
 function incrementCheese(event) {
@@ -73,11 +70,7 @@ function incrementCheese(event) {
     timeout(div)
 }
 
-const timeout = (div) => [
-    setTimeout(() => {
-        div.remove()
-    }, 800)
-]
+
 
 function buyBuilding(building) {
     const mb = buildings.find((u) => {
@@ -98,52 +91,42 @@ function buyBuilding(building) {
     }
 }
 
-function buyPan() {
-    if (cheeseAmount >= truePanCost) {
-        cheeseAmount -= truePanCost
-        cheese.innerHTML = Math.round(cheeseAmount)
+function save() {
+    localStorage.clear()
 
-        panAmount.innerHTML ++
+    buildings.map((building) => {
 
-        truePanCPS = parseFloat((truePanCPS).toFixed(2))
-        panCPS.innerHTML = truePanCPS
-        cps += truePanCPS
+        const obj = JSON.stringify({
+            trueAmount: parseFloat(building.amount.innerHTML),
+            trueCost: building.trueCost,
+            trueCPS: building.trueCPS
+        })
 
-        truePanCost *= 1.25
-        panCost.innerHTML = Math.round(truePanCost)
-    }
+        localStorage.setItem(building.name, obj)
+    })
+
+    localStorage.setItem('cpc', JSON.stringify(cpc))
+    localStorage.setItem('cps', JSON.stringify(cps))
+    localStorage.setItem('cheese', JSON.stringify(cheeseAmount))
 }
 
-function buyCow() {
-    if (cheeseAmount >= trueCowCost) {
-        cheeseAmount -= trueCowCost
-        cheese.innerHTML = Math.round(cheeseAmount)
+function load() {
+    buildings.map((building) => {
+        const savedValues = JSON.parse(localStorage.getItem(building.name))
 
-        cowAmount.innerHTML ++
+        building.trueCost = savedValues.trueCost
+        building.trueCPS = savedValues.trueCPS
 
-        trueCowCPS = parseFloat((trueCowCPS).toFixed(2))
-        cowCPS.innerHTML = trueCowCPS
-        cps += trueCowCPS
+        building.amount.innerHTML = savedValues.trueAmount
+        building.cost.innerHTML = Math.round(building.trueCost)
+        building.cps.innerHTML = building.trueCPS
+    })
 
-        trueCowCost *= 1.25
-        cowCost.innerHTML = Math.round(trueCowCost)
-    }
-}
+    cpc = JSON.parse(localStorage.getItem('cpc'))
+    cps = JSON.parse(localStorage.getItem('cps'))
+    cheeseAmount = JSON.parse(localStorage.getItem('cheese'))
 
-function buyFromagerie() {
-    if (cheeseAmount >= trueFromagerieCost) {
-        cheeseAmount -= trueFromagerieCost
-        cheese.innerHTML = Math.round(cheeseAmount)
-
-        fromagerieAmount.innerHTML ++
-
-        trueFromagerieCPS = parseFloat((trueFromagerieCPS).toFixed(2))
-        fromagerieCPS.innerHTML = trueFromagerieCPS
-        cps += trueFromagerieCPS
-
-        trueFromagerieCost *= 1.25
-        fromagerieCost.innerHTML = Math.round(trueFromagerieCost)
-    }
+    cheese.innerHTML = Math.round(cheeseAmount)
 }
 
 setInterval(() => {

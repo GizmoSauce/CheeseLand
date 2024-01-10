@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta name=""viewport" content="width=device-width, initial-scale=1">
         <title>Cheese Farmer</title> 
-        <link rel="icon" href="images/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png">
+        <link rel="icon" href="../images/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png">
         <link rel="stylesheet" href="style.css">
+        
     </head>
 
     <body>
         <section>
             <div class="main">
-
                 <div class="left">
                     <h3 style="font-size: 30px; margin-bottom: 5px;">Cheeses: <span class="cheeseCost">5000</span></h3>
                     <div class="stats">
@@ -21,14 +21,12 @@
                         <img src="../images/cheese.jpg" class="cheeseImage" onclick="incrementCheese(event)" draggable="false">
                     </div>
                 </div>
-
                 <div class="right">
                     <div class="upgrade" onclick="buyBuilding('pan')">
 
                         <div class="leftSection">
                             <img src="../images/pan.png" class="upgradeImage">
                         </div>
-
                         <div class="midSection">
                             <h4 style="font-size: 20px;">Pan</h4>
                             <div class="costInfo">
@@ -36,25 +34,19 @@
                                 <img src="../images/cheese.jpg" class="cheeseCostImage">
                             </div>
                         </div>
-
                         <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
                             <span class="panAmount">0</span>
                         </div>
-
                         <div class="popUp">
                             <p>
                                 +<span class="panCPS">0.2</span> Cheeses <br /> per Second
                             </p>
                         </div>
-
                     </div>
-
                     <div class="upgrade" onclick="buyBuilding('cow')">
-
                         <div class="leftSection">
                             <img src="../images/cow.webp" class="upgradeImage">
                         </div>
-
                         <div class="midSection">
                             <h4 style="font-size: 20px;">Cow</h4>
                             <div class="costInfo">
@@ -62,25 +54,20 @@
                                 <img src="../images/cheese.jpg" class="cheeseCostImage">
                             </div>
                         </div>
-
                         <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
                             <span class="cowAmount">0</span>
                         </div>
-
                         <div class="popUp">
                             <p>
                                 +<span class="cowCPS">5</span> Cheeses <br /> per Second
                             </p>
                         </div>
-
                     </div>
-
                     <div class="upgrade" onclick="buyBuilding('fromagerie')">
 
                         <div class="leftSection">
                             <img src="../images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png" class="upgradeImage">
                         </div>
-
                         <div class="midSection">
                             <h4 style="font-size: 20px;">Fromagerie</h4>
                             <div class="costInfo">
@@ -88,19 +75,44 @@
                                 <img src="../images/cheese.jpg" class="cheeseCostImage">
                             </div>
                         </div>
-
                         <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
                             <span class="fromagerieAmount">0</span>
                         </div>
-
                         <div class="popUp">
                             <p>
                                 +<span class="fromagerieCPS">20</span> Cheeses <br /> per Second
                             </p>
                         </div>
-
+                    </div>
+                    <div class="upgrade" onclick="buyBuilding('wisconsin')">
+                        <div class="leftSection">
+                            <img src="../images/outline-wi-1400w.png" class="upgradeImage">
+                        </div>
+                        <div class="midSection">
+                            <h4 style="font-size: 20px;">Wisconsin</h4>
+                            <div class="costInfo">
+                                <p>Cost: <span class="wisconsinCost">10000</span></p>
+                                <img src="../images/cheese.jpg" class="cheeseCostImage">
+                            </div>
+                        </div>
+                        <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
+                            <span class="wisconsinAmount">0</span>
+                        </div>
+                        <div class="popUp">
+                            <p>
+                                +<span class="wisconsinCPS">75</span> Cheeses <br /> per Second
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="utilityButtons">
+                <button class="utilityButton" onclick="save()">
+                    Save
+                </button>
+                <button class="utilityButton" onclick="load()">
+                    Load
+                </button>
             </div>
         </section>
 
