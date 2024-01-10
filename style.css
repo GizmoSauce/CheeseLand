@@ -1,86 +1,120 @@
-body{
-    background: url(images/cheesewallpaper.jpg);
-    background-position: center;
-    background-attachment: fixed;
-}
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
 
-
-button {
-    color: blue;
-}
-
-.sectionLeft {
-    float: left;
-    width: 80%;
-}
-
-.sectionRight {
-    float: right;
-    width: 20%;
-}
-
-.scoreContainer {
-    background-color: yellow;
-    width: 50%;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.clickerContainer img{
-    position: relative;
-    transition: all .1s ease-in-out
-}
-
-.clickerContainer img:hover {transform: scale(1.10); }
-.clickerContainer img:active { transform: scale(0.99); }
-
-.shopButton {
-    background-color: #b5b5b5;
-    transition: all .1s ease-in-out;
-    border-radius: 10px;
-    width: 100%;
-    margin: 10px 0px 10px 0px;
-}
-
-.shopButton:hover {
-    background-color: #c7c7c7;
-    transition: all .1s ease-in-out;
-}
-
-.shopButton #image {
-    width: 25%;
-}
-
-.shopButton img {
-    height: 64px;
-    width: 64px;
-}
-
-.shopButton #nameAndCost p {
-    margin: 0px;
-    width: 60%;
-}
-
-.shopButton #nameAndCost p:first-of-type {
-    font-size: 24px;
-}
-
-.shopButton #amount {
-    font-size: 40px;
-    color: #595959;
-    width: 15%;
-    font-family: roboto
-}
-
-.unselectable {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/cheesewallpaper.jpg);
     user-select: none;
+    font-family: 'PT Serif', serif;
 }
 
-.sectionFooter {
-    margin-top: 10%;
+.main {
+    display: flex;
+    gap: 200px;
+}
+
+.left h3, p {
+    text-align: center;
+}
+
+.cheeseImage {
+    width: 350px;
+}
+
+.cheeseImage:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    transition: transform 100ms ease-in-out;
+}
+
+.cheeseImage:active {
+    transform: scale(0.9);
+    transition: transform 100ms ease-in-out;
+}
+
+.upgradeImage {
+    width: 55px;
+}
+
+.cheeseCostImage {
+    width: 20px;
+    height: 20px;
+}
+
+.midSection h4, p{
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.cheeseImageContainer {
+    position: relative;
+}
+
+.upgrade {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+    width: 330px;
+    height: 60px;
+    border: 3px solid rgb(213, 188, 1);
+    background-image: url(../images/yellowTexture.webp);
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px -8px;
+    cursor: pointer;
+}
+
+.costInfo {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.popUp {
+    position: absolute;
+    right: -105px;
+    background-color: bisque;
+    height: 80px;
+    width: 100px;
+    text-align: center;
+    display: none;
+}
+
+.upgrade:hover .popUp {
+    display: block;
+}
+
+.fadeUp {
+    animation: fade-up 1s;
+}
+
+@keyframes fade-up {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    20% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    40% {
+        transform: translateY(-20px);
+        opacity: 0.75;
+    }
+    60% {
+        transform: translateY(-30px);
+        opacity: 0.5;
+    }
+    80% {
+        transform: translateY(-45px);
+        opacity: 0.25;
+    }
+    100% {
+        transform: translateY(-65px);
+        opacity: 0;
+    }
 }

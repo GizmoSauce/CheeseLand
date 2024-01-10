@@ -3,159 +3,107 @@
     <head> 
         <meta charset="utf-8">
         <meta name=""viewport" content="width=device-width, initial-scale=1">
-        <title>Cheese Clicker</title> 
-        <link rel="stylesheet" href="style.css">
+        <title>Cheese Farmer</title> 
         <link rel="icon" href="images/bZedgr0gq7RQBBnVYVc-Nmzdr-5vEUg4Dj8nTrMb7yA.png">
-    </head> 
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-    <body data-particle="images/8bitcheese.png">
-            <nav><a href="games.html">Games</a> <a href="index.html">Home</a></nav>
+    <body>
+        <section>
+            <div class="main">
 
-            <h1>Cheese Clicker</h1>
-
-            <h1 style="float: right;">
-                Buildings
-            </h1>
-
-        <div class="sectionLeft">
-            <center>
-                <div class="scoreContainer unselectable">
-                    <span id="score">0</span> cheese<br>
-                    <span id="scorePerSecond">0</span> cheese per second
+                <div class="left">
+                    <h3 style="font-size: 30px; margin-bottom: 5px;">Cheeses: <span class="cheeseCost">0</span></h3>
+                    <div class="stats">
+                        <p>Cheese Per Second: <span class="cpsStat">0</span></p>
+                    </div>
+                    <div class="cheeseImageContainer">
+                        <img src="../images/cheese.jpg" class="cheeseImage" onclick="incrementCheese(event)" draggable="false">
+                    </div>
                 </div>
-                <br>
-                <div class="clickerContainer unselectable">
-                    <img src="images/cheese.jpg" height="256" width="256" onclick="game.addToScore(game.clickValue)">
-                </div>
-            </center>
 
-            <div class="sectionFooter">
-                <h5>Cheese Clicker</h5>
+                <div class="right">
+                    <div class="upgrade" onclick="buyPan()">
+
+                        <div class="leftSection">
+                            <img src="../images/pan.png" class="upgradeImage">
+                        </div>
+
+                        <div class="midSection">
+                            <h4 style="font-size: 20px;">Pan</h4>
+                            <div class="costInfo">
+                                <p>Cost: <span class="panCost">15</span></p>
+                                <img src="../images/cheese.jpg" class="cheeseCostImage">
+                            </div>
+                        </div>
+
+                        <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
+                            <span class="panAmount">0</span>
+                        </div>
+
+                        <div class="popUp">
+                            <p>
+                                +<span class="panCPS">0.2</span> Cheeses <br /> per Second
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="upgrade" onclick="buyCow()">
+
+                        <div class="leftSection">
+                            <img src="../images/cow.webp" class="upgradeImage">
+                        </div>
+
+                        <div class="midSection">
+                            <h4 style="font-size: 20px;">Cow</h4>
+                            <div class="costInfo">
+                                <p>Cost: <span class="cowCost">200</span></p>
+                                <img src="../images/cheese.jpg" class="cheeseCostImage">
+                            </div>
+                        </div>
+
+                        <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
+                            <span class="cowAmount">0</span>
+                        </div>
+
+                        <div class="popUp">
+                            <p>
+                                +<span class="cowCPS">5</span> Cheeses <br /> per Second
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="upgrade" onclick="buyFromagerie()">
+
+                        <div class="leftSection">
+                            <img src="../images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png" class="upgradeImage">
+                        </div>
+
+                        <div class="midSection">
+                            <h4 style="font-size: 20px;">Fromagerie</h4>
+                            <div class="costInfo">
+                                <p>Cost: <span class="fromagerieCost">750</span></p>
+                                <img src="../images/cheese.jpg" class="cheeseCostImage">
+                            </div>
+                        </div>
+
+                        <div class="rightSection" style="font-size: 20px; font-weight: bolder;">
+                            <span class="fromagerieAmount">0</span>
+                        </div>
+
+                        <div class="popUp">
+                            <p>
+                                +<span class="fromagerieCPS">20</span> Cheeses <br /> per Second
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="sectionRight" id="shopContainer">
-            <table class="shopButton unselectable" onclick="buyPan()">
-                <tr>
-                    <td id="image"><img src="images/pan.png"</td>
-                    <td id="nameAndCost">
-                        <p>Pan</p>
-                        <p><span id="panCost">15</span> cheese</p>
-                    </td>
-                    <td id="amount"><span id="pans">0</span></td>
-                </tr>
-            </table>
-            <table class="shopButton unselectable" onclick="buyCow()">
-                <tr>
-                    <td id="image"><img src="images/cow.webp"</td>
-                    <td id="nameAndCost">
-                        <p>Cow</p>
-                        <p><span id="cowCost">100</span> cheese</p>
-                    </td>
-                    <td id="amount"><span id="cows">0</span></td>
-                </tr>
-            </table>
-            <table class="shopButton unselectable" onclick="buyFromagerie()">
-                <tr>
-                    <td id="image"><img src="images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png"></td>
-                    <td id="nameAndCost">
-                        <p>Fromagerie</p>
-                        <p><span id="fromagerieCost">1,000</span> cheese</p>
-                    </td>
-                    <td id="amount"><span id="fromageries">0</span></td>
-                </tr>
-            </table>
-            <table class="shopButton unselectable" onclick="buyWisconsin()">
-                <tr>
-                    <td id="image"><img src="images/outline-wi-1400w.png"></td>
-                    <td id="nameAndCost">
-                        <p>Wisconsin</p>
-                        <p><span id="wisconsinCost">10,000</span> cheese</p>
-                    </td>
-                    <td id="amount"><span id="wisconsins">0</span></td>
-                </tr>
-            </table>
-        </div>
+        </section>
 
-        <script defer>
-            var game = {
-                score: 0,
-                totalScore: 0,
-                totalClicks: 0,
-                clickValue: 1,
-                version: 0.001,
-            
-                addToScore: function(amount) {
-                    this.score += amount;
-                    this.totalScore += amount;
-                    display.updateScore();
-                },
-
-                getScorePerSecond: function() {
-                    var scorePerSecond = 0;
-                    for(i = 0; i < building.name.length; i++) {
-                        scorePerSecond += building.income[i] * building.count[i];
-                    }
-                    return scorePerSecond;
-                }
-            };
-
-            var building = {
-                name: [
-                    "Pan", 
-                    "Cow", 
-                    "Fromagerie", 
-                    "Wisconsin"
-                ],
-                image: [
-                    "images/pan.png",
-                    "images/cow.webp",
-                    "images/fromagerie-mr-fromage-nogent-sur-marne-la-fromagerie-500x500.png",
-                    "images/outline-wi-1400w.png"
-                ],
-                count: [0, 0, 0, 0],
-                income: [
-                    1,
-                    10,
-                    50,
-                    500
-                ],
-                cost: [
-                    15,   
-                    100,
-                    1000,
-                    10000,
-                ],
-
-                purchase: function(index) {
-                    if(game.score >= this.cost[index]) {
-                        game.score -= this.cost[index];
-                        this.count[index]++;
-                        this.cost[index] = Math.ceil(this.cost[index * 1.15]);
-                        display.updateScore();
-                        display.updateShop();
-                    }
-                }
-            };
-            
-            var display = {
-                updateScore: function() {
-                    document.getElementById("score").innerHTML = game.score;
-                    document.getElementById("scorePerSecond").innerHTML = game.getScorePerSecond();
-                    document.title = game.score + "cheese clicker";
-                },
-                
-                updateShop: function() {
-                    document.getElementById("shopContainer").innerHTML = "";
-                    for(i = 0; i < building.name.length; i++) {
-                        document.getElementById("shopContainer").innerHTML += '<table class="shopButton unselectable" onclick="building.purchase('+i+')"><tr><td id="image"><img src="images/'+building.image[i]+'"></td><td id="nameAndCost"><p>'+building.name[i]+'</p><p><span>'+building.cost[i]+'</span> cheese</p></td><td id="amount"><span>'+building.amount[i]+'</span></td></tr></table>';
-                    }
-                }
-            };
-
-            window.onload = function() {
-                display.updateScore();
-                display.updateShop();
-            };
-        </script>
+        <script src="cheese.js"></script>
     </body>
 </html>
